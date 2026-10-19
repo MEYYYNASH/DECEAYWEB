@@ -252,20 +252,22 @@ h2{font-size:18px;font-weight:600;margin:26px 0 12px}
 /* Multi-layer Dynamic Glowing Artwork Background (Fully Covers Beyond Borders) */
 .npbg {
   position: absolute;
-  top: -30%;
-  left: -30%;
-  right: -30%;
-  bottom: -30%;
-  width: 160%;
-  height: 160%;
+  top: -20%;
+  left: -20%;
+  right: -20%;
+  bottom: -20%;
+  width: 140%;
+  height: 140%;
   z-index: -2;
-  filter: blur(80px) saturate(2.4) contrast(1.15);
+  filter: blur(60px) saturate(2.0);
   opacity: 0.85;
   background-size: cover;
   background-position: center;
   pointer-events: none;
-  transition: background-image 0.8s ease, opacity 0.5s ease;
-  animation: ambientFloat 18s ease-in-out infinite alternate;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  will-change: opacity;
+  transition: opacity 0.35s ease;
 }
 .npbg-mesh {
   position: absolute;
@@ -381,8 +383,8 @@ h2{font-size:18px;font-weight:600;margin:26px 0 12px}
 .seg button.sel{background:rgba(255,255,255,.22);opacity:1}
 
 .np-body{flex:1;display:flex;flex-direction:column;position:relative;overflow:hidden;width:100%}
-#pl{flex:1;display:flex;flex-direction:column;justify-content:center;gap:18px}
-.art.big{position:relative;width:min(100%,40vh);aspect-ratio:1;border-radius:28px;align-self:center;box-shadow:0 20px 60px rgba(0,0,0,.45);overflow:hidden;background-size:cover;background-position:center}
+.art.big{position:relative;width:min(100%,40vh);aspect-ratio:1;border-radius:28px;align-self:center;box-shadow:0 18px 48px rgba(0,0,0,.45);overflow:hidden;background-size:cover;background-position:center;transform:translateZ(0);-webkit-transform:translateZ(0);will-change:transform,opacity;backface-visibility:hidden}
+#nart, #mart, .tt{transform:translateZ(0);-webkit-transform:translateZ(0);backface-visibility:hidden}
 .tt{display:flex;align-items:center;justify-content:space-between}
 .tt b{display:block;font-size:24px;font-weight:700;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:320px}
 .tt span{opacity:.7}
@@ -939,10 +941,93 @@ const KHMER_LRC = {
 [01:08.00] 2026 I survived!`
 };
 
+const TRENDING_GLOBAL = [
+  {
+    id: "trend-1762656732",
+    title: "Die With A Smile",
+    artist: "Lady Gaga & Bruno Mars",
+    dur: 252,
+    art: "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/11/ae/f2/11aef294-f57c-bab9-c9fc-529162984e62/24UMGIM85348.rgb.jpg/600x600bb.jpg",
+    src: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/07/6a/99/076a99ed-b946-431b-6f1f-54fa187ca5bd/mzaf_8102882277995122875.plus.aac.p.m4a"
+  },
+  {
+    id: "trend-1746801012",
+    title: "Espresso",
+    artist: "Sabrina Carpenter",
+    dur: 175,
+    art: "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/57/e8/7b/57e87ba0-5057-9bb9-c247-ce7dbe426e89/24UMGIM55213.rgb.jpg/600x600bb.jpg",
+    src: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/e9/4d/02/e94d0230-11ee-ef94-d2cf-a5d547bd73f4/mzaf_554140808559155562.plus.aac.p.m4a"
+  },
+  {
+    id: "trend-1739659142",
+    title: "BIRDS OF A FEATHER",
+    artist: "Billie Eilish",
+    dur: 210,
+    art: "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/92/9f/69/929f69f1-9977-3a44-d674-11f70c852d1b/24UMGIM36186.rgb.jpg/600x600bb.jpg",
+    src: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/34/31/d3/3431d34e-847f-5d66-df83-0bce688d997e/mzaf_18106743962423782018.plus.aac.p.m4a"
+  },
+  {
+    id: "trend-1468058171",
+    title: "Cruel Summer",
+    artist: "Taylor Swift",
+    dur: 178,
+    art: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/49/3d/ab/493dab54-f920-9043-6181-80993b8116c9/19UMGIM53909.rgb.jpg/600x600bb.jpg",
+    src: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/44/af/81/44af8168-9609-1b85-5048-ada08dceacf3/mzaf_1341699644335558812.plus.aac.p.m4a"
+  },
+  {
+    id: "trend-1542842761",
+    title: "Blinding Lights",
+    artist: "The Weeknd",
+    dur: 200,
+    art: "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/61/e7/3f/61e73f94-018d-5f50-50ec-8521952bc72e/20UM1IM11629.rgb.jpg/600x600bb.jpg",
+    src: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/12/73/ca/1273ca46-233a-5331-189b-25ac1d656533/mzaf_976341070785891411.plus.aac.p.m4a"
+  },
+  {
+    id: "trend-1574968888",
+    title: "STAY",
+    artist: "The Kid LAROI & Justin Bieber",
+    dur: 142,
+    art: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/89/59/6a/89596ab9-fa3c-8d08-4d95-a6450fa2013c/886449400515.jpg/600x600bb.jpg",
+    src: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/d7/4a/84/d74a84d5-9afa-761e-b632-baab55c2a23b/mzaf_11865500880477235553.plus.aac.p.m4a"
+  },
+  {
+    id: "trend-1615585008",
+    title: "As It Was",
+    artist: "Harry Styles",
+    dur: 167,
+    art: "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/2a/19/fb/2a19fb85-2f70-9e44-f2a9-82abe679b88e/886449990061.jpg/600x600bb.jpg",
+    src: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/67/10/16/67101606-3869-ca44-6c03-e13d6322cb51/mzaf_1135399237022217274.plus.aac.p.m4a"
+  },
+  {
+    id: "trend-1719661252",
+    title: "greedy",
+    artist: "Tate McRae",
+    dur: 130,
+    art: "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/21/4a/c2/214ac20c-a66c-84a1-e357-f7e60b1932ca/196871542661.jpg/600x600bb.jpg",
+    src: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/8d/e0/e2/8de0e2ae-f88c-5056-c07d-fe04acbc1d58/mzaf_1974309867621262359.plus.aac.p.m4a"
+  },
+  {
+    id: "trend-1440870375",
+    title: "Starboy",
+    artist: "The Weeknd ft. Daft Punk",
+    dur: 230,
+    art: "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/b5/92/bb/b592bb72-52e3-e756-9b26-9f56d08f47ab/16UMGIM67864.rgb.jpg/600x600bb.jpg",
+    src: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/11/71/d6/1171d6ad-3c96-e027-2af6-58028426588c/mzaf_15137631797407745471.plus.aac.p.m4a"
+  },
+  {
+    id: "trend-1538003843",
+    title: "Levitating",
+    artist: "Dua Lipa",
+    dur: 204,
+    art: "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/6c/11/d6/6c11d681-aa3a-d59e-4c2e-f77e181026ab/190295092665.jpg/600x600bb.jpg",
+    src: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/59/dc/4d/59dc4dda-93ff-8f1c-c536-f005f6ea6af5/mzaf_3066686759813252385.plus.aac.p.m4a"
+  }
+];
+
 const L={
   khmer:[...KHMER_LIST],
   global:[...GLOBAL_HITS],
-  trend:[],
+  trend:[...TRENDING_GLOBAL],
   hist:[...KHMER_LIST.slice(0,4)],
   fav:[],
   search:[],
@@ -1077,7 +1162,7 @@ try{
 }catch(e){}
 
 const save=()=>{try{localStorage.setItem("dceay2",JSON.stringify({prefs,fav:L.fav,hist:L.hist,playlists:L.playlists}))}catch(e){}};
-let tab="home",libTab="khmer",q="",Q=[...KHMER_LIST],i=0,shuf=false,rep=false,pane="player",lastCur=-2,tState="loading",sState="idle";
+let tab="home",libTab="khmer",q="",Q=[...KHMER_LIST],i=0,shuf=false,rep=false,pane="player",lastCur=-2,tState="ok",sState="idle";
 const au=new Audio();
 
 
@@ -1184,7 +1269,7 @@ return `<h1>Good ${g}</h1><p class="sub">What do you want to listen to?</p>
 
 ${L.hist.length?`<h2>Recently played</h2><div class="hs">${cards("hist")}</div>`:""}
 <h2>Trending Worldwide</h2>
-${tState==="ok"?`<div class="hs">${cards("trend")}</div>`:tState==="err"?`<p class="sub">Can’t reach online network. Check your connection.</p><button class="pill" onclick="loadTrend()">Try again</button>`:`<p class="sub">Loading trending songs…</p>`}
+${(tState==="ok" || (L.trend && L.trend.length))?`<div class="hs">${cards("trend")}</div>`:tState==="err"?`<p class="sub">Can’t reach online network. Check your connection.</p><button class="pill" onclick="loadTrend()">Try again</button>`:`<p class="sub">Loading trending songs…</p>`}
 <h2>All Khmer Songs</h2>
 ${rows("khmer","")}
 `},
@@ -1351,36 +1436,73 @@ function render(a){
   [...$("#navp").children].forEach((b,x)=>b.classList.toggle("sel",NAV[x][0]===tab));
 }
 function res(){const e=$("#res");if(e)e.innerHTML=V.res()}
-function refresh(){tab==="search"?res():render()}
+function refresh(full=true){tab==="search"?res():(full?render():updateActiveIndicators())}
 
-function loadTrend(){
-  tState="loading";if(tab==="home")render();
-  fetch("https://itunes.apple.com/us/rss/topsongs/limit=20/json")
-    .then(r=>r.json())
-    .then(j=>{
-      const entries=(j.feed&&j.feed.entry)||[];
-      L.trend=entries.map(e=>{
-        const id=e.id&&e.id.attributes?"itunes-"+e.id.attributes["im:id"]:"itunes-"+Math.random();
-        const title=e["im:name"]?e["im:name"].label:"Untitled";
-        const artist=e["im:artist"]?e["im:artist"].label:"Unknown Artist";
-        const link=(e.link||[]).find(l=>l.attributes&&l.attributes.type==="audio/x-m4a")||(e.link&&e.link[1]);
-        const src=link&&link.attributes?link.attributes.href:"";
-        const rawArt=e["im:image"]&&e["im:image"][2]?e["im:image"][2].label:"";
-        const art=rawArt.replace("170x170bb","600x600bb");
-        return {id,title,artist,dur:30,art,src};
-      }).filter(t=>t.src);
-      tState=L.trend.length?"ok":"err";
-    })
-    .catch(()=>{
-      fetch("https://itunes.apple.com/search?term=pop+hits&entity=song&limit=15")
-        .then(r=>r.json())
-        .then(j=>{
-          L.trend=(j.results||[]).filter(r=>r.previewUrl).map(normItunes);
-          tState=L.trend.length?"ok":"err";
-        })
-        .catch(()=>{tState="err"});
-    })
-    .then(()=>{if(tab==="home")render()});
+function updateActiveIndicators(){
+  const t = cur();
+  if(!t) return;
+  document.querySelectorAll(".row").forEach(r => {
+    const b = r.querySelector("b");
+    if(!b) return;
+    const isThis = b.textContent.includes(t.title);
+    const existingEq = b.querySelector(".eq");
+    if(isThis && !existingEq){
+      b.insertAdjacentHTML("afterbegin", EQ());
+    } else if(!isThis && existingEq){
+      existingEq.remove();
+    }
+  });
+}
+
+async function loadTrend(){
+  try{
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000);
+    const r = await fetch("https://itunes.apple.com/us/rss/topsongs/limit=20/json", { signal: controller.signal });
+    clearTimeout(timeoutId);
+    if(r.ok){
+      const j = await r.json();
+      const entries = (j.feed && j.feed.entry) || [];
+      const fresh = entries.map(e => {
+        const id = e.id && e.id.attributes ? "itunes-" + e.id.attributes["im:id"] : "itunes-" + Math.random();
+        const title = e["im:name"] ? e["im:name"].label : "Untitled";
+        const artist = e["im:artist"] ? e["im:artist"].label : "Unknown Artist";
+        const link = (e.link || []).find(l => l.attributes && l.attributes.type === "audio/x-m4a") || (e.link && e.link[1]);
+        const src = link && link.attributes ? link.attributes.href : "";
+        const rawArt = e["im:image"] && e["im:image"][2] ? e["im:image"][2].label : "";
+        const art = rawArt.replace("170x170bb", "600x600bb");
+        return { id, title, artist, dur: 30, art, src };
+      }).filter(t => t.src);
+      if(fresh.length){
+        L.trend = fresh;
+        tState = "ok";
+        if(tab === "home") render();
+        return;
+      }
+    }
+  }catch(err){
+    try{
+      const controller2 = new AbortController();
+      const timeoutId2 = setTimeout(() => controller2.abort(), 5000);
+      const r2 = await fetch("https://itunes.apple.com/search?term=pop+hits&entity=song&limit=15", { signal: controller2.signal });
+      clearTimeout(timeoutId2);
+      if(r2.ok){
+        const j2 = await r2.json();
+        const fresh2 = (j2.results || []).filter(r => r.previewUrl).map(normItunes);
+        if(fresh2.length){
+          L.trend = fresh2;
+          tState = "ok";
+          if(tab === "home") render();
+          return;
+        }
+      }
+    }catch(e2){}
+  }
+  if(!L.trend || !L.trend.length){
+    L.trend = [...TRENDING_GLOBAL];
+  }
+  tState = "ok";
+  if(tab === "home") render();
 }
 
 function onSearch(v){
@@ -1464,11 +1586,12 @@ function setTrack(){
   
   $("#mt").textContent=$("#nt").textContent=t.title;
   $("#ma").textContent=$("#na").textContent=t.artist;
-  lyr(t);drawLy();refresh();
+  lyr(t);drawLy();updateActiveIndicators();
   if(pane==="queue") drawQueue();
-  anim($("#nart"),[{opacity:0,transform:"scale(.88) rotate(-2deg)"},{opacity:1,transform:"none"}],560);
-  anim($(".tt"),[{opacity:0,transform:"translateY(10px)"},{opacity:1,transform:"none"}],420);
-  anim($("#mart"),[{transform:"scale(.7)"},{transform:"none"}],360);
+  // Silky smooth, hardware-accelerated micro-animations (zero lag, zero black flicker, zero jitter)
+  anim($("#nart"),[{opacity:0.85,transform:"scale(.98)"},{opacity:1,transform:"scale(1)"}],200);
+  anim($(".tt"),[{opacity:0.75,transform:"translateY(2px)"},{opacity:1,transform:"none"}],160);
+  anim($("#mart"),[{transform:"scale(.96)"},{transform:"none"}],160);
 }
 
 function paint(){
@@ -1545,13 +1668,13 @@ function load(){
 
   L.hist=[t,...L.hist.filter(x=>x.id!==t.id)].slice(0,12);
   save();
-  setTrack();
 
-  // 100% Native HTML5 Audio: Loud, Clear, Audible Sound
+  // Instant Native HTML5 Audio: Starts immediately with zero lag
   if(t.src){
-    au.src = t.src;
+    if(au.src !== t.src) au.src = t.src;
     au.play().catch(e => console.warn("Playback error:", e));
   }
+  setTrack();
   paint();
 }
 
@@ -2012,6 +2135,11 @@ function renderDynamicKaraokeLyrics() {
 
 // Hook paint() to synchronize timeline, playing button, and Dynamic Lyrics
 const _oldPaint = paint;
+let _lastPaintedTrackId = null;
+let _lastLikedState = null;
+let _lastPlayState = null;
+let _lastActiveKaraokeIdx = -2;
+
 paint = function() {
   _oldPaint();
   const t = cur();
@@ -2019,7 +2147,7 @@ paint = function() {
   const p = getPos();
   const d = getDur();
 
-  // 1. Center Player Seeker & Time
+  // 1. Center Player Seeker & Time (High-frequency, lightweight)
   const seekSlider = document.getElementById("pc-timeline-slider");
   if (seekSlider) { seekSlider.max = d; seekSlider.value = p; }
   const curTime = document.getElementById("pc-cur-time");
@@ -2028,64 +2156,73 @@ paint = function() {
   if (durTime) durTime.textContent = fmt(d);
 
   // 2. Play/Pause Button
-  const centerPlayBtn = document.getElementById("pc-center-play-btn");
-  if (centerPlayBtn) {
-    centerPlayBtn.innerHTML = pl ? '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>' : '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>';
+  if (pl !== _lastPlayState) {
+    _lastPlayState = pl;
+    const centerPlayBtn = document.getElementById("pc-center-play-btn");
+    if (centerPlayBtn) {
+      centerPlayBtn.innerHTML = pl ? '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>' : '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>';
+    }
   }
 
-  // 3. Heart like button
+  // 3. Heart like button & Track metadata (Only update when state or track changes)
   if (t) {
     const lk = liked(t);
-    const centerHeart = document.getElementById("pc-center-heart");
-    if (centerHeart) {
-      centerHeart.innerHTML = svgHeart(lk, 17);
-      centerHeart.classList.toggle("liked", lk);
+    if (lk !== _lastLikedState) {
+      _lastLikedState = lk;
+      const centerHeart = document.getElementById("pc-center-heart");
+      if (centerHeart) {
+        centerHeart.innerHTML = svgHeart(lk, 17);
+        centerHeart.classList.toggle("liked", lk);
+      }
     }
 
-    // 4. Update Trending Banner & Mini Card Artwork
-    const pcArtUrl = cleanArtUrl(t.art);
-    const banner = document.getElementById("pc-trending-banner");
-    if (banner && pcArtUrl) banner.style.backgroundImage = `url("${pcArtUrl}")`;
-    const trendTitle = document.getElementById("pc-trending-title");
-    if (trendTitle) trendTitle.textContent = t.title;
-    const trendArtist = document.getElementById("pc-trending-artist");
-    if (trendArtist) trendArtist.textContent = t.artist;
+    if (t.id !== _lastPaintedTrackId) {
+      _lastPaintedTrackId = t.id;
+      const pcArtUrl = cleanArtUrl(t.art);
+      const banner = document.getElementById("pc-trending-banner");
+      if (banner && pcArtUrl) banner.style.backgroundImage = `url("${pcArtUrl}")`;
+      const trendTitle = document.getElementById("pc-trending-title");
+      if (trendTitle) trendTitle.textContent = t.title;
+      const trendArtist = document.getElementById("pc-trending-artist");
+      if (trendArtist) trendArtist.textContent = t.artist;
 
-    const miniCover = document.getElementById("pc-mini-cover");
-    if (miniCover && pcArtUrl) miniCover.style.backgroundImage = `url("${pcArtUrl}")`;
-    const miniTitle = document.getElementById("pc-mini-title");
-    if (miniTitle) miniTitle.textContent = t.title;
-    const miniArtist = document.getElementById("pc-mini-artist");
-    if (miniArtist) miniArtist.textContent = t.artist;
+      const miniCover = document.getElementById("pc-mini-cover");
+      if (miniCover && pcArtUrl) miniCover.style.backgroundImage = `url("${pcArtUrl}")`;
+      const miniTitle = document.getElementById("pc-mini-title");
+      if (miniTitle) miniTitle.textContent = t.title;
+      const miniArtist = document.getElementById("pc-mini-artist");
+      if (miniArtist) miniArtist.textContent = t.artist;
 
-    // 5. Update Dynamic Lyrics Artwork Mesh
-    const mesh = document.getElementById("pc-lyric-glow-mesh");
-    if (mesh && pcArtUrl) mesh.style.backgroundImage = `url("${pcArtUrl}")`;
-    const songName = document.getElementById("pc-lyric-song-title");
-    if (songName) songName.textContent = `${t.title} • ${t.artist}`;
+      const mesh = document.getElementById("pc-lyric-glow-mesh");
+      if (mesh && pcArtUrl) mesh.style.backgroundImage = `url("${pcArtUrl}")`;
+      const songName = document.getElementById("pc-lyric-song-title");
+      if (songName) songName.textContent = `${t.title} • ${t.artist}`;
+
+      document.querySelectorAll(".pc-row-track").forEach(row => {
+        const titleEl = row.querySelector(".pc-row-title");
+        if (titleEl) {
+          row.classList.toggle("active", titleEl.textContent === t.title);
+        }
+      });
+    }
   }
 
-  // 6. Highlight active track row in "My Playlist"
-  document.querySelectorAll(".pc-row-track").forEach(row => {
-    const titleEl = row.querySelector(".pc-row-title");
-    if (titleEl && t) {
-      row.classList.toggle("active", titleEl.textContent === t.title);
-    }
-  });
-
-  // 7. Auto-scroll & Highlight Synced Karaoke Lyrics Line
+  // 4. Karaoke lyrics sync (Only update when active line index changes!)
   const key = t && (t.id || t.title), D = key && LYC[key];
   if (D && D.s === "sync" && pcLyricsOpen) {
     let activeIdx = -1;
     D.lines.forEach((l, k) => { if (l.t <= p) activeIdx = k; });
-    document.querySelectorAll(".pc-karaoke-line").forEach(el => {
-      const idx = +el.getAttribute("data-i");
-      const isCur = (idx === activeIdx);
-      el.classList.toggle("active", isCur);
-      if (isCur) {
-        el.scrollIntoView({ block: "center", behavior: "smooth" });
-      }
-    });
+    if (activeIdx !== _lastActiveKaraokeIdx) {
+      _lastActiveKaraokeIdx = activeIdx;
+      document.querySelectorAll(".pc-karaoke-line").forEach(el => {
+        const idx = +el.getAttribute("data-i");
+        const isCur = (idx === activeIdx);
+        el.classList.toggle("active", isCur);
+        if (isCur) {
+          el.scrollIntoView({ block: "center", behavior: "smooth" });
+        }
+      });
+    }
   }
 };
 
