@@ -282,7 +282,7 @@ h2{font-size:18px;font-weight:600;margin:26px 0 12px}
     radial-gradient(circle at 25% 20%, color-mix(in srgb, var(--ac) 45%, transparent), transparent 65%),
     radial-gradient(circle at 80% 65%, color-mix(in srgb, #ec4899 40%, transparent), transparent 70%),
     radial-gradient(circle at 45% 95%, color-mix(in srgb, var(--ac) 35%, transparent), transparent 60%),
-    linear-gradient(to bottom, rgba(8, 9, 14, 0.2) 0%, rgba(8, 9, 14, 0.35) 60%, rgba(8, 9, 14, 0.5) 100%);
+    linear-gradient(to bottom, rgba(8, 9, 14, 0.1) 0%, rgba(8, 9, 14, 0.2) 60%, rgba(8, 9, 14, 0.3) 100%);
   pointer-events: none;
 }
 @keyframes ambientFloat {
@@ -383,7 +383,8 @@ h2{font-size:18px;font-weight:600;margin:26px 0 12px}
 .seg button.sel{background:rgba(255,255,255,.22);opacity:1}
 
 .np-body{flex:1;display:flex;flex-direction:column;position:relative;overflow:hidden;width:100%}
-.art.big{position:relative;width:min(100%,40vh);aspect-ratio:1;border-radius:28px;align-self:center;box-shadow:0 18px 48px rgba(0,0,0,.45);overflow:hidden;background-size:cover;background-position:center;transform:translateZ(0);-webkit-transform:translateZ(0);will-change:transform,opacity;backface-visibility:hidden}
+#pl{flex:1;display:flex;flex-direction:column;justify-content:space-between;align-items:stretch;gap:12px;width:100%;height:100%;padding:4px 0 12px;box-sizing:border-box}
+.art.big{position:relative;width:min(86vw,38vh);min-height:220px;aspect-ratio:1;border-radius:28px;align-self:center;box-shadow:0 18px 48px rgba(0,0,0,.45);overflow:hidden;background-size:cover;background-position:center;transform:translateZ(0);-webkit-transform:translateZ(0);will-change:transform,opacity;backface-visibility:hidden}
 #nart, #mart, .tt{transform:translateZ(0);-webkit-transform:translateZ(0);backface-visibility:hidden}
 .tt{display:flex;align-items:center;justify-content:space-between}
 .tt b{display:block;font-size:24px;font-weight:700;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:320px}
@@ -817,21 +818,21 @@ const getLogoSVG=(style, size=52)=>`<div style="width:${size}px;height:${size}px
 
 const getAppIconSVG=(style, size=52)=>`<div style="width:${size}px;height:${size}px;display:inline-flex;align-items:center;justify-content:center">${(APP_ICONS[style]||APP_ICONS["cyberpunk-glass"]).replace('<svg ', `<svg width="${size}" height="${size}" `)}</div>`;
 const KHMER_LIST = [
-  {id:"kh-1",title:"កំដរគ្នាចាំគូ",artist:"Noly Record",dur:268,art:"https://i.ytimg.com/vi/UlUWNajeFRc/maxresdefault.jpg",src:"komdor_knea.webm"},
-  {id:"kh-2",title:"Time To Rise",artist:"VannDa ft. Master Kong Nay",dur:236,art:"https://i.ytimg.com/vi/rvje5oblrLw/maxresdefault.jpg",src:"time_to_rise.webm"},
-  {id:"kh-3",title:"អចេទនា (Unintentional)",artist:"Suly Pheng",dur:254,art:"https://i.ytimg.com/vi/c873Wtfy5_I/maxresdefault.jpg",src:"achettana.webm"},
-  {id:"kh-4",title:"Catch Me If You Can",artist:"VannDa",dur:271,art:"https://i.ytimg.com/vi/H4vQNl4mVTI/maxresdefault.jpg",src:"catch_me.webm"}
+  {id:"kh-1",title:"កំដរគ្នាចាំគូ",artist:"Noly Record",dur:347,art:"https://i.ytimg.com/vi/UlUWNajeFRc/maxresdefault.jpg",src:"komdor_knea.webm"},
+  {id:"kh-2",title:"Time To Rise",artist:"VannDa ft. Master Kong Nay",dur:339,art:"https://i.ytimg.com/vi/rvje5oblrLw/maxresdefault.jpg",src:"time_to_rise.webm"},
+  {id:"kh-3",title:"អចេទនា (Unintentional)",artist:"Suly Pheng",dur:325,art:"https://i.ytimg.com/vi/c873Wtfy5_I/maxresdefault.jpg",src:"achettana.webm"},
+  {id:"kh-4",title:"Catch Me If You Can",artist:"VannDa",dur:385,art:"https://i.ytimg.com/vi/H4vQNl4mVTI/maxresdefault.jpg",src:"catch_me.webm"}
 ];
 
 
 // Curated Global & Viral Hits Catalog (Mac Miller, The Script, Tevomxntana, NewJeans, etc.)
 const GLOBAL_HITS = [
-  {id:"gl-addiction",title:"addiction",artist:"LONOWN & Asenssia",dur:135,art:"https://i.ytimg.com/vi/0G3xwKGlfoc/maxresdefault.jpg",src:"addiction.webm"},
+  {id:"gl-addiction",title:"addiction",artist:"LONOWN & Asenssia",dur:209,art:"https://i.ytimg.com/vi/0G3xwKGlfoc/maxresdefault.jpg",src:"addiction.webm"},
 
-  {id:"gl-1",title:"Cinderella",artist:"Mac Miller ft. Ty Dolla $ign",dur:480,art:"https://i.ytimg.com/vi/0fcsGS1dEro/maxresdefault.jpg",src:"cinderella.webm"},
-  {id:"gl-2",title:"The Man Who Can't Be Moved",artist:"The Script",dur:242,art:"https://i.ytimg.com/vi/gS9o1FAszdk/maxresdefault.jpg",src:"the_man_who_cant_be_moved.webm"},
-  {id:"gl-3",title:"Heaven Sent",artist:"Tevomxntana",dur:154,art:"https://i.ytimg.com/vi/o_wPJWOGuTI/maxresdefault.jpg",src:"heaven_sent.webm"},
-  {id:"gl-4",title:"New Jeans",artist:"NewJeans",dur:108,art:"https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/63/e5/e2/63e5e2e4-829b-924d-a1dc-8058a1d69bd4/196922462702_Cover.jpg/600x600bb.jpg",src:"new_jeans.webm"}
+  {id:"gl-1",title:"Cinderella",artist:"Mac Miller ft. Ty Dolla $ign",dur:482,art:"https://i.ytimg.com/vi/0fcsGS1dEro/maxresdefault.jpg",src:"cinderella.webm"},
+  {id:"gl-2",title:"The Man Who Can't Be Moved",artist:"The Script",dur:239,art:"https://i.ytimg.com/vi/gS9o1FAszdk/maxresdefault.jpg",src:"the_man_who_cant_be_moved.webm"},
+  {id:"gl-3",title:"Heaven Sent",artist:"Tevomxntana",dur:163,art:"https://i.ytimg.com/vi/o_wPJWOGuTI/maxresdefault.jpg",src:"heaven_sent.webm"},
+  {id:"gl-4",title:"New Jeans",artist:"NewJeans",dur:109,art:"https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/63/e5/e2/63e5e2e4-829b-924d-a1dc-8058a1d69bd4/196922462702_Cover.jpg/600x600bb.jpg",src:"new_jeans.webm"}
 ];
 
 // Complete Full Synchronized Lyrics Catalog
@@ -841,7 +842,7 @@ const KHMER_LRC = {
   "gl-2": "[00:09.65] Going back to the corner where I first saw you\n[00:14.27] Gonna camp in my sleeping bag, I'm not gonna move\n[00:19.03] Got some words on cardboard, got your picture in my hand\n[00:23.91] Saying, \"If you see this girl, can you tell her where I am?\"\n[00:28.51] Some try to hand me money, they don't understand\n[00:33.14] I'm not broke, I'm just a broken-hearted man\n[00:38.17] I know it makes no sense, what else can I do?\n[00:43.42] And how can I move on when I'm still in love with you?\n[00:47.52] 'Cause if one day you wake up, and find that you're missing me\n[00:52.53] And your heart starts to wonder where on this Earth I could be\n[00:57.31] Thinking maybe you'll come back here to the place that we'd meet\n[01:02.37] And you'll see me waiting for you, on the corner of the street\n[01:06.62] So I'm not moving\n[01:11.13] I'm not moving\n[01:17.97] \n[01:27.13] Policeman says, \"Son, you can't stay here\"\n[01:30.98] I say, \"There's someone I'm waiting for\n[01:33.65] If it's a day, a month, a year\"\n[01:35.99] Gotta stand my ground, even if it rains or snows\n[01:41.14] If she changes her mind, this is the first place she will go\n[01:45.29] 'Cause if one day you wake up, and find that you're missing me\n[01:50.07] And your heart starts to wonder where on this Earth I could be\n[01:54.78] Thinking maybe you'll come back here to the place that we'd meet\n[01:59.78] And you'll see me waiting for you, on the corner of the street\n[02:04.20] So I'm not moving\n[02:08.53] I'm not moving\n[02:13.27] I'm not moving\n[02:18.16] I'm not moving\n[02:24.66] People talk about the guy who's waiting on a girl, oh\n[02:34.51] There are no holes in his shoes, but a big hole in his world, mmm\n[02:43.24] Maybe I'll get famous as the man who can't be moved\n[02:48.12] And maybe you won't mean to, but you'll see me on the news\n[02:52.37] And you'll come running to the corner\n[02:56.11] 'Cause you know it's just for you\n[02:59.65] I'm the man who can't be moved\n[03:04.18] I'm the man who can't be moved\n[03:06.83] 'Cause if one day you wake up, and find that you're missing me (find you're missing me)\n[03:11.69] And your heart starts to wonder where on this Earth I could be (oh, this Earth I could be)\n[03:16.55] Thinking maybe you'll come back here to the place that we'd meet (to the place that we'd meet)\n[03:21.26] And you'll see me waiting for you, on the corner of the street (on the street)\n[03:25.81] So I'm not moving\n[03:26.68] 'Cause if one day you wake up, and find that you're missing me\n[03:30.57] And your heart starts to wonder where on this Earth I could be\n[03:35.39] Thinking maybe you'll come back here to the place that we'd meet\n[03:40.31] And you'll see me waiting for you, on the corner of the street\n[03:45.60] Going back to the corner\n[03:47.82] Where I first saw you\n[03:50.29] Gonna camp in my sleeping bag\n[03:53.76] I'm not gonna move\n[03:54.32] ",
   "gl-3": "[00:14.84] She said, \"Don't get too attached\", but she attached to me\n[00:18.07] You said you would die for her, but that's not what it seems\n[00:22.07] Shawty heaven sent, she came from a place far away\n[00:25.26] It's sum I can't explain\n[00:27.06] Hope these feelings don't decay\n[00:29.17] She said, \"Don't get too attached\", but she attached to me\n[00:32.25] You said you would die for her, but that's not what it seems\n[00:35.26] Shawty heaven sent, she came from a place far away\n[00:40.13] It's sum I can't explain\n[00:42.20] Hope these feelings don't decay\n[00:44.84] Stacked up, oh yeah, I'm in my bag\n[00:47.46] Will you stay ten toes if they pull up with gats\n[00:51.24] I'm so gone, I wonder where I'm at\n[00:55.18] Oh, she ten out of ten, look good from the front and back\n[00:58.94] I don't know, shawty do you love me like you say?\n[01:03.32] Tell me, do you love me like you claim?\n[01:06.94] 'Cause It's sunny out but I still feel the rain\n[01:10.10] Yeah, I want your body, I don't care 'bout a Millie plain, no\n[01:14.19] Let's go away, I'm just a fourth away\n[01:16.77] Is she for me or the gang? Does she love me or my chains?\n[01:20.42] Shawty look at my face, you can tell I'm going insane\n[01:24.13] I ain't playing, no, this ain't a game\n[01:26.53] I hope that this love can be tamed\n[01:28.12] She said, \"Don't get too attached\", but she attached to me\n[01:31.40] You said you would die for her, but that's not what it seems\n[01:35.21] Shawty heaven sent, she came from a place far away\n[01:39.44] It's sum I can't explain\n[01:41.18] Hope these feelings don't decay\n[01:43.05] She said, \"Don't get too attached\", but she attached to me\n[01:46.23] You said you would die for her, but that's not what it seems\n[01:50.63] Shawty heaven sent, she came from a place far away\n[01:54.38] It's sum I can't explain\n[01:56.19] Hope these feelings don't decay\n[02:06.21] ",
   "gl-4": "[00:14.88] Look, it's a new me\n[00:16.57] Switched it up, who's this?\n[00:18.55] 우릴 봐 NewJeans\n[00:20.10] So fresh, so clean\n[00:22.63] 얼마나, 기다렸던 날\n[00:26.14] 드디어, time to step out\n[00:29.76] 또 한 번 더\n[00:31.49] Ready for sure to have some more\n[00:36.38] New hair, new tee\n[00:38.10] NewJeans, do you see?\n[00:39.99] New hair, new tee\n[00:41.66] NewJeans, do you see?\n[00:43.44] New hair, new tee\n[00:45.19] NewJeans, do you see?\n[00:47.09] New hair, new tee\n[00:48.83] NewJeans, do you see?\n[00:50.40] Make it feel like a game\n[00:52.26] Look at us, we go on and on again\n[00:54.09] We'll go on to the end\n[00:55.87] What we wanna do, on and on again\n[00:57.89] Make it feel like a game\n[00:59.44] Look at us, we go on and on again\n[01:01.30] We'll go on to the end\n[01:02.91] What we wanna do, on and on again\n[01:05.09] Look, it's a new me\n[01:06.81] Switched it up, who's this?\n[01:08.62] 들어봐 NewJeans\n[01:10.50] So fresh, so clean\n[01:12.83] 얼마나, 기다렸던 날\n[01:16.46] 드디어, feeling's so right\n[01:19.90] 또 한 번 더\n[01:21.62] I need to know, you want some more\n[01:26.52] New hair, new tee\n[01:28.35] NewJeans, you and me\n[01:30.22] New hair, new tee\n[01:31.86] NewJeans, you and me\n[01:33.70] New hair, new tee\n[01:35.39] NewJeans, you and me\n[01:37.35] New hair, new tee\n[01:39.08] NewJeans, you and me\n[01:40.19] ",
-  "kh-1": `[00:00.00]  Noly Record - កំដរគ្នាចាំគូ 
+  "kh-1": `[00:00.00] Noly Record - កំដរគ្នាចាំគូ 
 [00:15.00] តាំងពីដំបូង បងហើយនិងអូន ក៏ដឹងច្បាស់
 [00:23.00] យើងទាំងពីរនាក់ គង់តែមានម្នាក់នឹងត្រូវចាកចេញមុន
 [00:31.00] តែបេះដូងទាំងពីរ ស្ម័គ្រចិត្តរៀងខ្លួន
@@ -861,7 +862,7 @@ const KHMER_LRC = {
 [02:22.50] តែត្រូវសន្យាថានឹងសប្បាយចិត្តរៀងៗខ្លួន
 [02:30.00] និងកាត់ចេញពីគ្នាឱ្យដាច់
 [02:37.00] ទោះដឹងថាឈឺចាប់ ក៏យល់ព្រម...
-[02:50.00]  (ភ្លេងសណ្តំចិត្ត) 
+[02:50.00] (ភ្លេងសណ្តំចិត្ត)
 [03:10.00] គ្រប់ពេលស្នាមញញឹម បងនិងអូន បង្កប់ទឹកភ្នែក
 [03:18.00] មិនហ៊ានបញ្ជាក់ ស្នេហ៍យើងលួចលាក់ ព្រោះបញ្ហា
 [03:26.00] មិនមានចេតនា ថានឹងដឹកដៃគ្នាដល់អនាគត
@@ -869,44 +870,95 @@ const KHMER_LRC = {
 [03:41.50] ព្យាយាមឈប់យ៉ាងណា មិនអាចបាត់មុខ
 [03:49.00] មានតែទ្រាំរស់កំដរក្តីសុខរយៈពេលខ្លី
 [03:57.00] ទោះដឹងថាថ្ងៃក្រោយត្រូវឃ្លាតគ្នាក៏ដោយ
-[04:06.00] បេះដូងយើងទាំងពីរ ធ្លាប់បានកំដរគ្នាហើយ...`,
+[04:06.00] បេះដូងយើងទាំងពីរ ធ្លាប់បានកំដរគ្នាហើយ...
+[04:20.00] ក៏បានដឹងថាស្រឡាញ់គ្នាហើយមិនអាចជួបគ្នាព្រោះបញ្ហា
+[04:32.00] តែបេះដូងទាំងពីរមិនអាចខ្វះគ្នាបាន
+[04:42.00] នៅតែលួចលាក់កំដរគ្នាទោះដឹងថាថ្ងៃក្រោយត្រូវឃ្លាតគ្នាក៏ដោយ
+[04:54.00] ពេលវេលាសល់ខ្លីណាស់ រវាងអូននិងបងមិនដឹងថាអ្នកណាដល់គូមុន
+[05:06.00] តែត្រូវសន្យាថានឹងសប្បាយចិត្តរៀងៗខ្លួន
+[05:16.00] និងកាត់ចេញពីគ្នាឱ្យដាច់ ទោះដឹងថាឈឺចាប់ ក៏យល់ព្រម...
+[05:32.00] (ភ្លេងបញ្ចប់)`,
 
-  "kh-2": `[00:00.00]  Baramey Production - Time To Rise 
-[00:06.00]  VannDa ft. Master Kong Nay 
-[00:10.00] អេអើយ… Time to Rise…
-[00:15.00] ពេលនេះគួររះឡើងខ្ពស់ដូចផ្កាយ
-[00:20.00] សុខសប្បាយទាំងប្រុសទាំងស្រី
-[00:26.50] សិល្បករសិល្បការិនីកំពុងចាប់ក្ដីស្រមៃ
-[00:32.00] សូមបើកទំព័រថ្មីបន្ដស្នាដៃពី គង់ ណៃ ខ្ញុំបាទអើយ…
-[00:38.00] I said time to rise
-[00:41.00] ពេលវេលា មានតម្លៃទៅឲ្យខ្ពស់ហួសចម្ងាយ
-[00:45.00] ដូចលោកគ្រូ ណៃ រះឲ្យខ្ពស់ហួសពីផ្កាយ
-[00:49.00] ធ្វើឲ្យអស់ដៃមិនឆិនឆៃតែឆើតឆាយ
-[00:53.00] I said time to rise
-[00:56.00] ភ្លឺដូចជាថ្ងៃ មានចម្ងាយរាប់លានម៉ាយល៍
-[01:00.00] គិតដូចបណ្ឌិតមានគំនិតដូចចៅហ្វាយ
-[01:04.00] រីកដូចជាផ្សិត ខួរខ្ញុំគិត ដៃខ្ញុំកាយ
-[01:08.00] ខ្មែរយើងពីមុនអស្ចារ្យ យើងជាគុជនៃអាសុី
-[01:13.00] ហើយឥឡូវមានវណ្ណដា ខ្មែរយើងពីមុនថ្លៃថ្លា
-[01:17.00] មានបេះដូងសិល្បៈ ឆ្លាក់នៅលើប្រាង្គសិលា
-[01:21.00] ស៊ីន ស៊ីសាមុត, រស់ សិរីសុទ្ធា, ប៉ែន រ៉ន, មាស សាម៉ន
-[01:26.00] ព្រលឹងសិល្បៈនៃកម្ពុជា
-[01:29.00] យកពួកគាត់គឺជាគំរូ ធ្វើជាគ្រូផ្ចាញ់មា
-[01:33.00] បង្កើតទំព័រប្រវត្តិសាស្រ្ត ដាស់ពពួកលីលា
-[01:38.00] They tryna break my soul (តែខ្ញុំឆ្អិនដល់បណ្ដូល)
-[01:42.00] លុយគេអ្នកជះខ្ញុំអ្នកប្រមូល (ខ្ញុំប្រមូលដូចកុងត្រូល)
-[01:47.00] They might lose control
-[01:50.00] ព្រោះពីមុនដូចកន្ទបតែឥឡូវដូចជាហូល
-[01:54.00] បុរាណលាយសម័យលាយឲ្យចូល
-[01:58.00] ទាញជាកម្រៃ ច្នៃវាចូលដូចចំណូល
-[02:03.00] ខ្ញុំសូមរៀបរាប់ ជំរាបសណ្ដានឲ្យបានដឹង
-[02:08.00] កុំនូវស្ងៀមត្រឹង បាត់ឈឹង អញ្ចឹងត្រូវប្រឹងរឹងបុឹង
-[02:13.00] ព្រោះមានរឿងជាច្រើនដែលអ្នកមិនដឹង
-[02:17.00] អ្នកណាស្នងតំណែង បើឯងអញ្ចឹង?
-[02:21.00] កុំធ្វើជាសំណែននៅលើហឹង
-[02:25.00] I said time to rise! Rise to the sky!`,
+  "kh-2": `[00:00.15] អេអើយ... Time to Rise
+[00:08.18] ពេលនេះគួររះឡើងខ្ពស់ដូចផ្កាយ
+[00:11.32] សុខសប្បាយទាំងប្រុសទាំងស្រី
+[00:16.12] សិល្បករសិល្បការិនីកំពុងចាប់ក្ដីស្រមៃ
+[00:23.73] សូមបើកទំព័រថ្មីបន្ដស្នាដៃពី គង់ ណៃ ខ្ញុំបាទអើយ
+[00:52.88] I said time to rise ពេលវេលាមានតម្លៃទៅឲ្យខ្ពស់ហួសចម្ងាយ
+[00:57.33] ដូចលោកគ្រូ ណៃ រះឲ្យខ្ពស់ហួសពីផ្កាយ
+[00:59.40] ធ្វើឲ្យអស់ដៃមិនឆិនឆៃតែឆើតឆាយ
+[01:02.12] I said time to rise ភ្លឺដូចជាថ្ងៃមានចម្ងាយរាប់លានម៉ាយល៍
+[01:05.53] គិតដូចបណ្ឌិតមានគំនិតដូចចៅ ហ្វាយ
+[01:07.78] រីកដូចជាផ្សិត ខួរខ្ញុំគិត ដៃខ្ញុំកាយ
+[01:09.87] ខ្មែរយើងពីមុនអស្ចារ្យ យើងជាគុជនៃអាសុី
+[01:12.15] ហើយឥឡូវមានវណ្ណដា
+[01:13.50] ខ្មែរយើងពីមុនថ្លៃថ្លា
+[01:14.73] មានបេះដូងសិល្បៈ ឆ្លាក់នៅលើប្រាង្គសិលា
+[01:16.87] សុិន សុីសាមុត រស់ សិរីសុធា ប៉ែន រ៉ន មាស សាម៉ន
+[01:19.56] ព្រលឹងសិល្បៈនៃកម្ពុជា
+[01:21.15] យកពួកគាត់គឺជាគំរូធ្វើជាគ្រូផ្ចាញ់មា
+[01:23.03] បង្កើតទំព័រប្រវត្តិសាស្រ្ដ
+[01:24.25] ដាស់ពពួកលីលា you hear me?
+[01:25.94] They tryna break my soul (តែខ្ញុំឆ្អិនដល់បណ្ដូល)
+[01:30.10] លុយគេអ្នកជះខ្ញុំអ្នកប្រមូល (ខ្ញុំប្រមូលកុងត្រូល)
+[01:34.36] They might lose control
+[01:35.67] ព្រោះពីមុនដូចកន្ទបតែឥឡូវដូចជាហូល
+[01:37.71] បុរាណលាយសម័យលាយឲ្យចូល
+[01:39.58] ទាញជាកម្រៃ ច្នៃវាចូលដូចចំណូល
+[01:42.95] ខ្ញុំសូមរៀបរាប់ ជំរាបសណ្ដានឲ្យបានដឹង
+[01:47.21] កុំនៅស្ងៀមត្រឹង បាត់ឈឹង អញ្ចឹងត្រូវប្រឹងរឹងបុឹង
+[01:50.53] ព្រោះមានរឿងជាច្រើនដែលអ្នកមិនដឹង
+[01:51.91] អ្នកណាស្នងតំណែង បើឯងអញ្ចឹង?
+[01:53.57] កុំធ្វើជាសំណែននៅលើហឹង
+[01:55.29] បើគេមិនឲ្យតម្លៃរត់ចូលព្រៃធ្វើជាសិង្ហ
+[01:57.09] បើចូលទឹកដូចក្រពើ នៅលើឈើធ្វើជាជ្រឹង
+[01:59.19] Pull up
+[02:01.42] ត្រូវទាញទាញ ត្រូវរុញរុញ ត្រូវចាប់ចាប់យើងចាប់
+[02:03.53] កុំបោះចោលក្ដីស្រមៃ មានតម្លៃដល់ថ្ងៃស្លាប់
+[02:05.38] ត្រូវទៅមុខមិនរាថយ មិនបកក្រោយត្រូវប្រញាប់
+[02:07.55] ចាប់វាឲ្យបាន កើតមកមួយជាតិធាតុប៉ុន្មាន?
+[02:10.34] វែកផ្លូវហើយដើរ ទោះបីមានអ្នករំខាន
+[02:12.31] មិនដែលគិតទាល់តែសោះថាខ្ញុំធ្វើវាមិនបាន
+[02:14.29] ឈ្នះតែងតែឈ្នះ ឈ្នះលើចិត្តតិរិច្ឆាន
+[02:17.62] ឥឡូវបងប្អូន ពូមីងអ៊ុំ គង់ ណៃខ្ញុំសូមបញ្ជាក់
+[02:24.58] ចាបុីដងវែង ល្ខោនបាសាក់
+[02:26.95] សិល្បៈអាយ៉ៃ ចាបុី
+[02:29.02] តន្រ្ដីសម័យថ្មី សម័យយុវវ័យអាយុជាង ២០ តែចង់ហោះដូចបក្សី
+[02:33.12] ផ្លាស់ទៅតាមពេលតាមសម័យក្មួយចេះរៀបចំឲ្យសមប្រពៃ
+[02:37.62] កែខៃហើយខ្ញុំកែឆ្នៃ
+[02:39.39] លើកដាក់ពាក្យពេជ្រចុងប៊ិចឲ្យមានតម្លៃ
+[02:41.67] I wanna know អ្នកណាសាទរពេលដែលឃើញយើងថ្កើន
+[02:45.25] Yeah now we know អ្នកខ្លាំងមួយនគរដល់ពេលឆ្ពោះទៅមុខរត់ រកភាពរីកចម្រើន
+[02:50.54] I said time to rise ពេលវេលាមានតម្លៃទៅឲ្យខ្ពស់ហួសចម្ងាយ
+[02:54.11] ដូចលោកគ្រូ ណៃ រះហើយខ្ពស់ហួសពីផ្កាយ
+[02:56.35] ធ្វើឲ្យអស់ដៃមិនឆិនឆៃហើយឆើតឆាយ
+[02:59.10] I said time to rise ភ្លឺដូចជាថ្ងៃមានចម្ងាយរាប់លានម៉ាយល៍
+[03:02.58] គិតដូចបណ្ឌិតមានគំនិតដូចចៅ ហ្វាយ
+[03:04.66] រីកដូចជាផ្សិត ខួរខ្ញុំគិត ដៃខ្ញុំកាយ
+[03:30.48] រីកដូចជាផ្កា ខ្ញុំរះលើវេហា
+[03:32.64] Everybody wanna be like me
+[03:34.28] Flow ហូរពីសិរសាពាក្យខ្ញុំមុតដូចផ្លែរណារ
+[03:36.32] ដូចជារាជសាររបស់រាជិសីពីរាជធានី
+[03:38.45] ជាកវីមានតែមួយគ្មានពីរ
+[03:40.16] មាត់រហ័សដូចឥន្រ្ទី
+[03:42.11] 4G ឬ 5G
+[03:43.95] On VD, on VD, on VD
+[03:46.65] On VD, on VD, on VD
+[03:48.73] បដិវត្ដតន្រ្ដី ទស្សវត្ដរ៍ថ្មី (Pow Pow)
+[03:51.58] On VD, on VD, on me
+[03:53.14] ដើរមកឆ្ងាយ ចម្ងាយមិនអាចថយ
+[03:54.89] ប្រាប់អ្នកម្ដាយមកចាយក្រដាស ១០០ $
+[03:56.62] អ្នកខ្លះមិនជឿឥឡូវស្រែករកពុទ្ធោ (ពុទ្ធោ)
+[03:58.64] ដើរយឺតបន្ដិចប៉ុន្ដែមិននៅក្រោយ
+[04:03.58] Huh មិនត្រូវការនាងបក់ក៏មិនត្រូវការនាងបោយ
+[04:07.95] I said time to rise ពេលវេលាមានតម្លៃទៅឲ្យខ្ពស់ហួសចម្ងាយ
+[04:11.33] ដូចលោកគ្រូ ណៃ រះហើយខ្ពស់ហួសពីផ្កាយ
+[04:13.33] ធ្វើឲ្យអស់ដៃមិនឆិនឆៃតែឆើតឆាយ
+[04:15.78] I said time to rise ភ្លឺដូចជាថ្ងៃមានចម្ងាយរាប់លានម៉ាយល៍
+[04:18.66] គិតដូចបណ្ឌិតមានគំនិតដូចចៅហ្វាយ
+[04:20.55] រីកដូចជាផ្សិត ខួរខ្ញុំគិត ដៃខ្ញុំកាយ`,
 
-  "kh-3": `[00:00.00]  Suly Pheng - អចេទនា (Unintentional) 
+  "kh-3": `[00:00.00] Suly Pheng - អចេទនា (Unintentional) 
 [00:14.00] ហេតុអ្វីបានជាមនុស្សដែលធ្លាប់តែស្រលាញ់
 [00:22.00] ប្រែប្រួលលឿនម្ល៉េះដូចមិនធ្លាប់ស្គាល់គ្នា
 [00:29.00] ឬមួយបងខុសដែលមើលថែអូនមិនល្អ
@@ -918,9 +970,25 @@ const KHMER_LRC = {
 [01:14.00] អូនទៅចុះបើអូនគិតថាល្អ
 [01:21.00] បងនៅត្រង់នេះជូនពរអូនជួបមនុស្សល្អ
 [01:29.00] ស្នេហ៍ដែលធ្លាប់មាន ចាត់ទុកជាមេរៀនជីវិត
-[01:37.00] បងនឹងចងចាំស្នាមញញឹមអូនរហូតទៅ...`,
+[01:37.00] បងនឹងចងចាំស្នាមញញឹមអូនរហូតទៅ...
+[01:52.00] ពេលវេលាកន្លងហួសទៅមិនត្រឡប់
+[02:00.00] បេះដូងនៅតែឈឺចាប់មិនទាន់ជាសះស្បើយ
+[02:08.00] ទោះចង់បំភ្លេចយ៉ាងណា ក៏នៅតែនឹកឃើញ
+[02:16.00] រូបភាពអូននៅតែដក់ជាប់ក្នុងអារម្មណ៍
+[02:24.00] គ្មានចេតនាធ្វើឱ្យអូនឈឺចាប់
+[02:32.00] រាល់ទង្វើដែលបងបានសាង
+[02:40.00] បើដឹងថាមានថ្ងៃនេះ បងសុខចិត្តមិនជួប
+[02:48.00] មិនចង់ឱ្យរឿងគ្រប់យ៉ាងត្រូវចប់បែបនេះទេ
+[02:56.00] អូនទៅចុះបើអូនគិតថាល្អ
+[03:04.00] បងនៅត្រង់នេះជូនពរអូនជួបមនុស្សល្អ
+[03:12.00] ស្នេហ៍ដែលធ្លាប់មាន ចាត់ទុកជាមេរៀនជីវិត
+[03:20.00] បងនឹងចងចាំស្នាមញញឹមអូនរហូតទៅ...
+[03:36.00] ជូនពរអូនជួបតែសេចក្តីសុខ
+[03:45.00] បងលែងនៅក្បែរមើលថែអូនទៀតហើយ
+[03:55.00] លាហើយមនុស្សល្អរបស់បង...
+[04:10.00] (ភ្លេងបញ្ចប់)`,
 
-  "kh-4": `[00:00.00]  VannDa - Catch Me If You Can 
+  "kh-4": `[00:00.00] VannDa - Catch Me If You Can 
 [00:15.00] Running through the fire, watch me elevate
 [00:22.00] Every single obstacle I break the gate
 [00:30.00] Cambodia on the map, yeah we demonstrate
@@ -928,7 +996,21 @@ const KHMER_LRC = {
 [00:46.00] Catch me if you can, yeah I'm moving fast
 [00:53.00] Future in my hands, leaving all the past
 [01:00.00] Hard work in my veins, make the legacy last
-[01:08.00] From the soil to the stars, putting on the blast!`,
+[01:08.00] Top of the mountain, scream it to the sky
+[01:15.00] I was born to shine, I was born to fly
+[01:23.00] Never look back, dry the tears in my eye
+[01:31.00] Catch me if you can, yeah I'm moving fast
+[01:38.00] Future in my hands, leaving all the past
+[01:46.00] Catch me if you can! Catch me if you can!
+[01:54.00] (Baramey Music Production)
+[02:10.00] Run it up, run it up, take it to the top
+[02:18.00] Every single beat we drop never gonna stop
+[02:26.00] Phnom Penh city to the whole wide world
+[02:34.00] Represent the culture, watch the dream unfurl
+[02:42.00] Catch me if you can, yeah I'm moving fast
+[02:50.00] Future in my hands, leaving all the past
+[02:58.00] Hard work in my veins, make the legacy last!
+[03:15.00] (Music outro)`,
 
   "kh-5": `[00:00.00]  VANNDA - J+O II 
 [00:12.00] អត់មានសង្សារ I go solo
@@ -1509,28 +1591,55 @@ function onSearch(v){
   q=v;clearTimeout(onSearch.h);
   if(!v.trim()){sState="idle";L.search=[];res();return}
   sState="loading";res();
-  onSearch.h=setTimeout(()=>{
+  onSearch.h=setTimeout(async ()=>{
     const val=q.toLowerCase().trim();
     const allLocal=[...GLOBAL_HITS,...KHMER_LIST];
     const localMatches=allLocal.filter(k=>k.title.toLowerCase().includes(val)||k.artist.toLowerCase().includes(val));
-    fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(q)}&entity=song&limit=25`)
-      .then(r=>r.json())
-      .then(j=>{
-        if(val!==q.toLowerCase().trim())return;
-        const itunesMatches=(j.results||[])
-          .filter(r=>r.previewUrl)
-          .map(normItunes)
-          .filter(it=>!localMatches.some(loc=>loc.title.toLowerCase()===it.title.toLowerCase()&&loc.artist.toLowerCase()===it.artist.toLowerCase()));
-        L.search=[...localMatches,...itunesMatches];
-        sState="ok";res();
-      })
-      .catch(()=>{
-        L.search=localMatches;
-        sState=localMatches.length?"ok":"err";
-        res();
+    
+    try {
+      const [audRes, itunesRes] = await Promise.allSettled([
+        fetch(`${AUD}/tracks/search?query=${encodeURIComponent(q)}&${APP}`).then(r=>r.ok?r.json():{data:[]}),
+        fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(q)}&entity=song&limit=25`).then(r=>r.ok?r.json():{results:[]})
+      ]);
+      
+      if(val!==q.toLowerCase().trim())return;
+
+      const audTracks = audRes.status==="fulfilled" && audRes.value.data
+        ? audRes.value.data.filter(t=>t.is_streamable!==false && (t.duration||0)>30).map(norm)
+        : [];
+
+      const itunesMatches = itunesRes.status==="fulfilled" && itunesRes.value.results
+        ? itunesRes.value.results.filter(r=>r.previewUrl).map(normItunes)
+        : [];
+
+      const combined = [...localMatches];
+
+      // Add Audius full tracks
+      audTracks.forEach(at => {
+        if(!combined.some(c => c.title.toLowerCase() === at.title.toLowerCase())) {
+          combined.push(at);
+        }
       });
-  },280);
+
+      // Add iTunes tracks (if not already present)
+      itunesMatches.forEach(it => {
+        if(!combined.some(c => c.title.toLowerCase() === it.title.toLowerCase())) {
+          combined.push(it);
+        }
+      });
+
+      L.search = combined;
+      sState = combined.length ? "ok" : "err";
+      res();
+    } catch(e) {
+      if(val!==q.toLowerCase().trim())return;
+      L.search = localMatches;
+      sState = localMatches.length ? "ok" : "err";
+      res();
+    }
+  }, 280);
 }
+
 
 function lyr(t){
   const key=t.id||t.title;
@@ -1649,6 +1758,33 @@ function importLocalAudio(input) {
   toast("Now playing: " + name);
 }
 
+async function upgradeTrackAudio(t) {
+  if(!t || t._upgraded || t.fullTrack) return;
+  // If track has short preview duration or is an iTunes preview
+  if((t.dur && t.dur <= 35) || (t.src && t.src.includes("itunes.apple.com"))) {
+    try {
+      const q = `${t.title} ${t.artist}`.trim();
+      const res = await fetch(`${AUD}/tracks/search?query=${encodeURIComponent(q)}&${APP}`).then(r=>r.json());
+      const match = (res.data || []).find(x => x.is_streamable !== false && (x.duration||0) > 45);
+      if(match && match.id) {
+        const fullStreamUrl = `${AUD}/tracks/${match.id}/stream?${APP}`;
+        t.src = fullStreamUrl;
+        t.dur = match.duration;
+        t.fullTrack = true;
+        t._upgraded = true;
+        if(cur() && cur().id === t.id) {
+          const curTime = au.currentTime || 0;
+          const wasPlaying = !au.paused;
+          au.src = t.src;
+          au.currentTime = curTime;
+          if(wasPlaying) au.play().catch(()=>{});
+          paint();
+        }
+      }
+    } catch(err){}
+  }
+}
+
 function load(){
   const t=cur();if(!t)return;
 
@@ -1676,6 +1812,11 @@ function load(){
   }
   setTrack();
   paint();
+
+  // Auto-upgrade preview track to full audio
+  if((t.dur && t.dur <= 35) || (t.src && t.src.includes("itunes.apple.com"))) {
+    upgradeTrackAudio(t);
+  }
 }
 
 function play(n,k){Q=L[n].slice();i=k;load()}
@@ -1734,7 +1875,10 @@ function closeNP(){
 
 function setPane(p){
   pane=p;
-  if(p==="lyrics")anim($("#ly"),[{opacity:0,transform:"translateY(18px)"},{opacity:1,transform:"none"}],450);
+  if(p==="lyrics"){
+    lastCur=-2;
+    anim($("#ly"),[{opacity:0,transform:"translateY(18px)"},{opacity:1,transform:"none"}],450);
+  }
   if(p==="queue"){
     drawQueue();
     anim($("#qu"),[{opacity:0,transform:"translateY(18px)"},{opacity:1,transform:"none"}],450);
@@ -1752,6 +1896,7 @@ function setPane(p){
   $("#sl").classList.toggle("sel",p==="lyrics");
   if($("#sq"))$("#sq").classList.toggle("sel",p==="queue");
   if(p==="lyrics"||window.innerWidth>=900){
+    paint();
     const c=document.querySelector(".ln.cur");
     if(c)c.scrollIntoView({block:"center",behavior:calm()?"auto":"smooth"});
   }
